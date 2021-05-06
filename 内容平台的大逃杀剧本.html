@@ -3,883 +3,205 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 <title>内容平台的大逃杀剧本</title><title>内容平台的大逃杀剧本</title>
-<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
-.mac-os-11 { --title-bar-height:28px; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-.typora-export .task-list-item input { pointer-events: none; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
-button, input, select, textarea { color: inherit; font: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
-p { orphans: 4; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
-.CodeMirror-linenumber { user-select: none; }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li blockquote { margin: 1rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
-  .typora-export #write { break-after: avoid; }
-  .typora-export #write::after { height: 0px; }
-  .is-mac table { break-inside: avoid; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-.MathJax_ref { fill: currentcolor; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
-code { text-align: left; vertical-align: initial; }
-a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none 0s ease 0s; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-.md-expand mark .md-meta { opacity: 0.3 !important; }
-mark .md-meta { color: rgb(0, 0, 0); }
-@media print {
-  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-}
-.md-diagram-panel .messageText { stroke: none !important; }
-.md-diagram-panel .start-state { fill: var(--node-fill); }
-.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
-.md-fences.md-fences-math { font-size: 1em; }
-.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
-.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
-.md-fences-advanced:not(.md-focus) { background: inherit; }
-.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
-.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
-.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
-.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
-@media screen and (max-width: 1024px) {
-  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
-}
-@media screen and (max-width: 800px) {
-  .typora-export-sidebar { display: none; }
-}
-.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
-.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
-.outline-content strong { font-weight: 400; }
-.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
-.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
-.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
-.outline-expander:hover::before { content: ""; }
-.outline-h1 > .outline-item { padding-left: 0px; }
-.outline-h2 > .outline-item { padding-left: 1em; }
-.outline-h3 > .outline-item { padding-left: 2em; }
-.outline-h4 > .outline-item { padding-left: 3em; }
-.outline-h5 > .outline-item { padding-left: 4em; }
-.outline-h6 > .outline-item { padding-left: 5em; }
-.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
-.outline-label:hover { text-decoration: underline; }
-.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
-.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
-.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
-.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
-.outline-children { display: none; }
-.info-panel-tab-wrapper { display: none; }
-.outline-item-open > .outline-children { display: block; }
-.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
-.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
-.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
-.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
-.typora-export-collapse-outline .outline-children { display: none; }
-.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
-.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
-.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
-
-
-:root {
-    --bg-color: white;
-    /*change background*/
-    --text-color: black;
-    /*change text color*/
-    --md-char-color: #C7C5C5;
-    /*change color of meta characetrs like `*` in markdown */
-    --meta-content-color: #5b808d;
-    /*change color of meta contents like image text or link address in markdown */
-
-    --primary-color: #428bca;
-    /* color of primary buttons */
-    --primary-btn-border-color: #285e8e;
-    --primary-btn-text-color: #fff;
-
-    --window-border: 1px solid #eee;
-    /*border for sidebar, etc*/
-
-    --active-file-bg-color: #eee;
-    /*background color if list item in file tree or file list*/
-    --active-file-text-color: inherit;
-    --active-file-border-color: #777;
-
-    --side-bar-bg-color: var(--bg-color);
-    /*change background of sidebar*/
-    --item-hover-bg-color: rgba(229, 229, 229, 0.59);
-    /*background of control items when hover, like menu in sidebar*/
-    --item-hover-text-color: inherit;
-    --monospace: monospace;
-    /*monospace font for codes, fences*/
-}
-
-
-/***************** 这里定义一些全局信息****************/
-
-html,
-body,
-#write {
-    background: white;
-    font-family: 'Times New Roman', "仿宋";
-font-weight: small;
-    max-width: 80rem;
-}
-
-body {
-    margin: auto;
-}
-
-html {
-font-family: "仿宋"
-    font-size: 18px;
-}
-
-#write {
-    margin: auto;
-    text-align: justify;
-}
-
-
-/***************** 这里定义水平线的样式 ****************/
-
-hr {
-    border: none;
-    border-top: 1px dashed #333;
-    color: #333;
-}
-
-
-/***************** 这里定义脚注的样式 ****************/
-
-sup[md-inline="footnote"] {
-    background-color: white;
-    font-size: 0.8rem;
-    padding: 0;
-}
-
-sup[md-inline="footnote"]:before {
-    content: '[';
-}
-
-sup[md-inline="footnote"]:after {
-    content: ']';
-}
-
-
-/***************** 这里定义链接的样式 ****************/
-
-a {
-    color: #285e8e;
-}
-
-/***************** 这里定义ToC的样式 ****************/
-
-/* .md-toc-inner {
-    text-decoration: none;
-} */
-
-.md-toc-content {
-    font-family: 'Times New Roman', 宋体;
-    counter-reset: h1toc;
-}
-
-.md-toc-h1 {
-    font-family: 'Times New Roman', 黑体;
-    margin-left: 0;
-    font-size: 1rem;
-    counter-reset: h2toc;
-}
-
-.md-toc-h2 {
-    font-size: 1rem;
-    margin-left: 2rem;
-    counter-reset: h3toc;
-}
-
-.md-toc-h3 {
-    margin-left: 3rem;
-    font-size: 1rem;
-    counter-reset: h4toc;
-}
-
-.md-toc-h4 {
-    margin-left: 4rem;
-    font-size: 1rem;
-    counter-reset: h5toc;
-}
-
-.md-toc-h5 {
-    margin-left: 5rem;
-    font-size: 1rem;
-    counter-reset: h6toc;
-}
-
-.md-toc-h6 {
-    margin-left: 6rem;
-    font-size: 1rem;
-}
-
-.md-toc-h1:before {
-    color: #285e8e;
-    white-space: pre-wrap;
-    counter-increment: h1toc;
-    content: counter(h1toc) "  "
-}
-
-.md-toc-h1 .md-toc-inner {
-    margin-left: 0;
-}
-
-.md-toc-h2:before {
-    color: #285e8e;
-    white-space: pre-wrap;
-    counter-increment: h2toc;
-    content: counter(h1toc) ". "counter(h2toc) "  "
-}
-
-.md-toc-h2 .md-toc-inner {
-    margin-left: 0;
-}
-
-.md-toc-h3:before {
-    color: #285e8e;
-    white-space: pre-wrap;
-    counter-increment: h3toc;
-    content: counter(h1toc) ". "counter(h2toc) ". "counter(h3toc) "  "
-}
-
-.md-toc-h3 .md-toc-inner {
-    margin-left: 0;
-}
-
-.md-toc-h4:before {
-    color: #285e8e;
-    white-space: pre-wrap;
-    counter-increment: h4toc;
-    content: counter(h1toc) ". "counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) "  "
-}
-
-.md-toc-h4 .md-toc-inner {
-    margin-left: 0;
-}
-
-.md-toc-h5:before {
-    color: #285e8e;
-    white-space: pre-wrap;
-    counter-increment: h5toc;
-    content: counter(h1toc) ". "counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) ". "counter(h5toc) "  "
-}
-
-.md-toc-h5 .md-toc-inner {
-    margin-left: 0;
-}
-
-.md-toc-h6:before {
-    color: #285e8e;
-    white-space: pre-wrap;
-    counter-increment: h6toc;
-    content: counter(h1toc) ". "counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) ". "counter(h5toc) ". "counter(h6toc) "  "
-}
-
-.md-toc-h6 .md-toc-inner {
-    margin-left: 0;
-}
-
-
-/***************** 这里定义任务列表的样式 ****************/
-
-/* .task-list {
-    padding-left: 0;
-} */
-
-/* .md-task-list-item {
-    padding-left: 3rem;
-} */
-
-.md-task-list-item>input {
-    width: 1rem;
-    height: 1rem;
-    display: block;
-    -webkit-appearance: initial;
-    margin-left: -1.5rem;
-    margin-top: .375rem;
-    border: 0;
-}
-
-.md-task-list-item>input:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-.md-task-list-item>input:before {
-    border: 1px solid #555;
-    border-radius: calc(1rem);
-    width: calc(1rem);
-    height: calc(1rem);
-    background: #fff;
-    content: '';
-    transition: background-color 200ms ease-in-out;
-    display: block;
-}
-
-.md-task-list-item>input:checked:before,
-.md-task-list-item>input[checked]:before {
-    background: #333;
-    /* border-width: 1px; */
-    display: inline-block;
-    transition: background-color 200ms ease-in-out;
-}
-
-.md-task-list-item>input:checked:after,
-.md-task-list-item>input[checked]:after {
-    opacity: 0;
-}
-
-.task-list-done {
-    /* styles for completed tasks */
-    text-decoration: line-through;
-}
-
-/* .task-list-not-done {
-    
-} */
-
-/*
-.md-task-list-item>input:after {
-    -webkit-transition: opacity 0.05s ease-in-out;
-    -moz-transition: opacity 0.05s ease-in-out;
-    transition: opacity 0.05s ease-in-out;
-    -webkit-transform: rotate(-50deg);
-    -moz-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 0.25rem;
-    left: 0.225rem;
-    width: 0.6rem;
-    height: 0.4rem;
-    border: 1px solid #fff;
-    border-top: 0;
-    border-right: 0;
-    content: '\00a0';
-    opacity: 0;
-}
-*/
-
-
-/***************** 这里定义YAML头部的样式 ****************/
-
-#write pre.md-meta-block {
-    font-family: 'Times New Roman', 宋体;
-    padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #f7f7f7;
-    border: 0;
-    border-radius: 3px;
-    color: #777777;
-    margin-top: 0 !important;
-}
-
-
-/***************** 这里定义代码的样式 ****************/
-
-code {
-    font-family: 'Consolas', 宋体;
-    padding: .1rem;
-    background: #f0f0f0;
-    font-size: 0.9rem;
-    margin-left: 0.15rem;
-    margin-right: 0.15rem;
-}
-
-.md-fences {
-    font-family: 'Consolas';
-    border: 1px solid #e7eaed;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-    padding: 0;
-    padding: 2px 4px 0px 4px;
-    font-size: 0.8rem;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding-top: 8px;
-    padding-bottom: 6px;
-}
-
-
-/***************** 这里定义大纲的样式 ****************/
-
-.outline-item {
-    font-family: 'Times New Roman', 黑体;
-    font-size: 0.8rem;
-    line-height: 1.35;
-}
-
-.outline-h2 .outline-label,
-.outline-h3 .outline-label,
-.outline-h4 .outline-label,
-.outline-h5 .outline-label,
-.outline-h6 .outline-label {
-    font-size: 0.7rem;
-}
-
-.sidebar-content {
-    counter-reset: toch1
-}
-
-.outline-h1 {
-    counter-reset: toch2
-}
-
-.outline-h2 {
-    counter-reset: toch3
-}
-
-.outline-h3 {
-    counter-reset: toch4
-}
-
-.outline-h4 {
-    counter-reset: toch5
-}
-
-.outline-h5 {
-    counter-reset: toch6
-}
-
-.outline-h1>.outline-item>.outline-label:before {
-    counter-increment: toch1;
-    content: counter(toch1) " "
-}
-
-.outline-h2>.outline-item>.outline-label:before {
-    counter-increment: toch2;
-    content: counter(toch1) "."counter(toch2) " "
-}
-
-.outline-h3>.outline-item>.outline-label:before {
-    counter-increment: toch3;
-    content: counter(toch1) "."counter(toch2) "."counter(toch3) " "
-}
-
-.outline-h4>.outline-item>.outline-label:before {
-    counter-increment: toch4;
-    content: counter(toch1) "."counter(toch2) "."counter(toch3) "."counter(toch4) " "
-}
-
-.outline-h5>.outline-item>.outline-label:before {
-    counter-increment: toch5;
-    content: counter(toch1) "."counter(toch2) "."counter(toch3) "."counter(toch4) "."counter(toch5) " "
-}
-
-.outline-h6>.outline-item>.outline-label:before {
-    counter-increment: toch6;
-    content: counter(toch1) "."counter(toch2) "."counter(toch3) "."counter(toch4) "."counter(toch5) "."counter(toch6) " "
-}
-
-.outline-h4,
-.outline-h5,
-.outline-h6 {
-    display: none;
-}
-
-
-/***************** 这里定义标题的样式 ****************/
-
-#write h1,
-#write h2,
-#write h3,
-#write h4,
-#write h5,
-#write h6 {
-    font-weight: normal;
-    font-family: 'Times New Roman', 黑体;
-}
-
-#write h1 {
-    font-size: 1.5rem;
-    color: black;
-    text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-}
-
-#write h2 {
-    font-size: 1.2rem;
-    color: #285e8e;
-    margin-top: 1rem;
-    margin-bottom: 0.75rem;
-}
-
-#write h3 {
-    color: brown;
-    font-size: 1rem;
-    margin-top: 0.75rem;
-    margin-bottom: 0.5rem;
-}
-
-#write h4,
-#write h5,
-#write h6 {
-    color: black;
-    font-size: 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-
-/***************** 这里定义列表的样式 ****************/
-
-ol li {
-    /*list-style-type: decimal;*/
-    list-style-position: outside;
-}
-
-ul li {
-    /*list-style-type: "disc";*/
-    list-style-position: outside;
-}
-
-/*working for PDF both in marker and in text, for Typora only for marker*/
-li {
-    font-size: 1rem;
-    line-height: 1.75;
-    margin: 0.25rem;
-    font-family: 'Times New Roman', 宋体;
-}
-
-/*working for PDF nothing, for Typora only for text*/
-li p {
-    font-size: 1rem;
-    line-height: 1.75;
-    margin: 0.25rem;
-    font-family: 'Times New Roman', 宋体;
-}
-
-ul,
-ol {
-    margin: 0.5rem 0 0.5rem 0;
-}
-
-
-/***************** 这里定义段落的样式 ****************/
-
-p {
-    font-family: 'Times New Roman', 宋体;
-    font-size: 1rem;
-    line-height: 1.75;
-    margin: 0.5rem 0 0.5rem 0;
-}
-
-
-/***************** 这里定义图片的样式 ****************/
-
-img {
-    margin: auto;
-    display: block;
-    width: 85%;
-}
-
-
-/***************** 这里定义引用的样式 ****************/
-
-blockquote {
-    border-left: 5px solid #666;
-    background-color: #f0f0f0;
-    margin-top: 0.75rem;
-    margin-left: 0.375rem;
-    margin-right: 0.375rem;
-    margin-bottom: 0.75rem;
-}
-
-blockquote p {
-    font-family: 'Times New Roman', 宋体;
-    padding: 0.25rem 0.5rem;
-    font-size: 1rem;
-    line-height: 1.75;
-    margin: 0rem;
-}
-
-
-/***************** 这里定义表格的样式 ****************/
-
-table {
-    position: relative;
-    font-family: 'Times New Roman', 宋体;
-    width: 70%;
-    left: 15%;
-    *border-collapse: collapse;
-    border-spacing: 0;
-    border-top: solid black 2px;
-    border-bottom: solid black 2px;
-}
-
-table thead th {
-    border-bottom: 3px double black;
-}
-
-
-/***************** 这里定义公式的样式 ****************/
-
-/* .MathJax_Display {
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0;
-}
-
-p.mathjax-block,
-.mathjax-block {
-    padding-bottom: 0;
-}
-
-.mathjax-block>.code-tooltip {
-    bottom: 5px;
-    box-shadow: none;
-} */
-
-
-/***************** 这里定义节编号的样式 ****************/
-
-#write {
-    counter-reset: h1;
-}
-
-#write h1 {
-    counter-reset: h2;
-}
-
-#write h2 {
-    counter-reset: h3;
-}
-
-#write h3 {
-    counter-reset: h4;
-}
-
-#write h4 {
-    counter-reset: h5;
-}
-
-#write h5 {
-    counter-reset: h6;
-}
-
-/** put counter result into headings */
-#write h1:before {
-    white-space: pre-wrap;
-    counter-increment: h1;
-    content: counter(h1) "   ";
-}
-
-#write h2:before {
-    white-space: pre-wrap;
-    counter-increment: h2;
-    content: counter(h1) "."counter(h2) "  "
-}
-
-#write h3:before {
-    white-space: pre-wrap;
-    counter-increment: h3;
-    content: counter(h1) "."counter(h2) "."counter(h3) "  "
-}
-
-#write h4:before {
-    white-space: pre-wrap;
-    counter-increment: h4;
-    content: counter(h1) "."counter(h2) "."counter(h3) "."counter(h4) "  "
-}
-
-#write h5:before {
-    white-space: pre-wrap;
-    counter-increment: h5;
-    content: counter(h1) "."counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "  "
-}
-
-#write h6:before {
-    white-space: pre-wrap;
-    counter-increment: h6;
-    content: counter(h1) "."counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) "  "
-}
-
-
-/** focus on heading */
-#write>h1.md-focus:before,
-#write>h2.md-focus:before,
-#write>h3.md-focus:before,
-#write>h4.md-focus:before,
-#write>h5.md-focus:before,
-#write>h6.md-focus:before {
-    content: none;
-    /* color: red;
-    border: inherit;
-    position: inherit;
-    left: initial;
-    float: none;
-    top: initial;
-    font-size: inherit;
-    padding-left: inherit;
-    padding-right: inherit;
-    vertical-align: inherit;
-    font-weight: inherit;
-    line-height: inherit; */
-}
-
-
-/***************** 这里定义打印或者导出PDF的样式 ****************/
-
-@media print {
-
-    /* for example: */
-    .typora-export * {
-        -webkit-print-color-adjust: exact;
-    }
-
-    /* add styles here */
-    @page {
-        margin-top: 20mm;
-        margin-bottom: 20mm;
-        margin-left: 10mm;
-        margin-right: 10mm;
-    }
-
-    #write {
-        max-width: 100%;
-    }
-}
-
- :root {--mermaid-font-zoom:1.25em ;} 
-</style>
 </head>
-<body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><center> 内容平台的大逃杀剧本</center><p>&nbsp;</p><blockquote><p><span>这些年在线内容消费正在成为一个越发重要的投资板块，在港美股上市的公司也越来越多。其中不乏大量的牛股机会，也有大把的价值陷阱。这些公司的产品大家都是耳熟能详，谁都能花两分钟下个 APP 体验一下。</span></p><p><span>但落实到投资，似乎大多人只会用自己喜不喜欢、身边有没有人用，来做一些直观粗糙的感受，对于这些公司如何增长、运营、变现、估值，理解远远不够。</span></p><p><span>旗下多几个工作室，拍一堆片子，做一堆游戏就是平台了吗？</span></p><p><span>同样是视频网站，爱奇艺用户更多，为什么 B 站会远比爱奇艺值钱？</span></p><p><span>为什么没有演技的流量明星会有那么高的片酬？</span></p><p><span>同样面对 10 亿的互联网人群，为什么有些产品能持续增长，有些产品不死不活？</span></p><p><span>近期和即将上市的快手、知乎、小红书、抖音，又该怎么识别投资机会？</span></p><p><span>看完本文，这些问题都能捋顺。</span></p></blockquote><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n23"><a class="md-toc-inner" href="#内容平台分类">内容平台分类 </a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n33"><a class="md-toc-inner" href="#一个最简模型">一个最简模型 </a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n52"><a class="md-toc-inner" href="#两类平台模型的核心竞争要素">两类平台模型的核心竞争要素 </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n53"><a class="md-toc-inner" href="#内容型平台公司">内容型平台公司</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n67"><a class="md-toc-inner" href="#平台型内容公司">平台型内容公司</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n91"><a class="md-toc-inner" href="#行业现状大逃杀">行业现状：大逃杀 </a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n110"><a class="md-toc-inner" href="#内容平台的投资机会">内容平台的投资机会 </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n528"><a class="md-toc-inner" href="#微博2015-2018-年用户商业化双轮驱动叠加格局认知变化带来戴维斯双击股价涨幅-16x">微博，2015-2018 年用户、商业化双轮驱动，叠加格局认知变化带来戴维斯双击，股价涨幅 16x</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n560"><a class="md-toc-inner" href="#陌陌2016-2018-年用户天花板肉眼可见商业化效率提升股价涨幅-8x">陌陌：2016-2018 年，用户天花板肉眼可见，商业化效率提升，股价涨幅 8x</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n580"><a class="md-toc-inner" href="#b-站20-年至今用户商业化效率投资人认知三要素叠加股价涨幅-10x">B 站：20 年至今。用户、商业化效率、投资人认知三要素叠加，股价涨幅 10x</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n589"><a class="md-toc-inner" href="#爱奇艺用户增长缓慢货币化率提升缓慢">爱奇艺：用户增长缓慢，货币化率提升缓慢。</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n139"><a class="md-toc-inner" href="#内容平台的未来第二曲线">内容平台的未来：第二曲线 </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n591"><a class="md-toc-inner" href="#内容型平台公司以流量为杠杆切入线上交易场景">内容型平台公司以流量为杠杆切入线上交易场景。</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n596"><a class="md-toc-inner" href="#平台型内容公司以优质-ip-为杠杆提高变现效率尝试切入消费场景">平台型内容公司以优质 IP 为杠杆提高变现效率，尝试切入消费场景。</a></span></p></div><h1 id='内容平台分类'><span>内容平台分类 </span></h1><p><span>当我们在说内容平台的时候，实际上经常混淆两类公司：第一种叫内容型平台公司，第二种叫平台型内容公司。</span></p><p>&nbsp;</p><p><span>咋一看两类公司听起来很像，样子看起来也像，但在细节处却是各有侧重，尤其在心法上大相径庭，对于团队能力点的要求也不尽相同。</span></p><p>&nbsp;</p><p><span>内容型平台公司的本质是平台。平台的核心是运营，强调的是如何获取流量，如何分配流量，如何保持平台内容的品质，如何调度内容生产者生产多层次多品类的内容，如何让内容生产者恰上饭。做平台型公司和治理一个城市是类似的，平台的运营者是那双看得见的宏观调控的手。</span></p><p>&nbsp;</p><p><span>国内的内容型平台公司，主要是抖音、快手、西瓜、头条、B 站、微博、知乎、小红书、视频号、公众号、多数直播平台等。海外的内容型平台公司，主要包括 Youtube、Twitter、Steam 等。</span></p><p>&nbsp;</p><p><span>平台型内容公司的本质是规模化的内容公司，通过自有渠道将内容传输给用户。内容公司的原始模型是做一本杂志、一个电台频道、一个电视频道。只是 Online 时代到来后，这类公司借由互联网拥有了几乎无穷深度的内容货架，但其商业本质依然是内容的产销，其核心技能点是①如何打造一个面向市场的创意生产体系；②如何长期锁定稀缺的内容生产要素；③如何成体系的组织内容以满足多层次的内容需求。</span></p><p>&nbsp;</p><p><span>国内的主要平台型内容公司：游戏里的腾讯，视频里的优爱腾芒，音乐音频里的 TME / 网易云 / 喜马拉雅，漫画里的腾讯 / 快看，文学里的阅文 / 番茄。海外则主要是奈飞、迪士尼、AT&amp;T、Comcast 这几个巨头传媒公司。</span></p><p>&nbsp;</p><p><span>上面这个定义比较绝对，多数公司的实际业务会在两极之间找一个中间地带定位，同时点着两边的技能点。比较典型的例子就是在投资人心中的 “中国油管” 和创始人心中的 “中国迪士尼” 之间反复横跳的 B 站了。</span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jQShzRH1Nln00ghxpia808j4cZsMvS1opGUXl5Cepx2GicMez1jDyqe1g/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h1 id='一个最简模型'><span>一个最简模型 </span></h1><p><span>我们对内容平台的本质做一个最简化的抽象：</span></p><p>&nbsp;</p><p><span>想象内容平台是一个正在接水的水杯，水龙头不断进水（新增用户），同时水杯底下有一个漏口在不断流出水（没有留存下来的用户）。如果进水大于出水，代表 DAU 或者 MAU 的水位就会上升。反之当进水等于出水的时候，水面就平了，用户规模就达到了天花板。</span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jiciaR1joVTiagtsTr8wmMWibQyvT7tgibolr8N2Ul0epMSJLKjs50C7QWOg/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p><span>也就是说，一个内容平台能达到的用户水平由其新增和留存共同决定。</span></p><p>&nbsp;</p><p><span>留存的极限由产品内生给定，除非产品大改，否则极限留存很难系统性变化。</span></p><blockquote><p><span>比如长视频平台因为其内容消费的决策成本高，占据时间长，场景受限，内容更新周期等因素，极限留存可能很难和短视频平台抗衡；</span></p><p><span>比如面向学生群体的产品，其留存天然受学生开学等因素影响，具有较大的波动性，平均下来不如其他人群。</span></p></blockquote><p><span>注意这里说的是品类极限，而某个产品能否达到品类极限，是由各个产品团队的运营能力，以及外部竞争环境决定的。</span></p><p>&nbsp;</p><p><span>新增则是由产品内生特点及投入力度而共同决定，限制新增上限的两个最重要的因素是：</span></p><blockquote><p><span>（1）</span><strong><span>用户群体的天然天花板</span></strong><span>：当一个产品从自己的主流用户群尝试破圈到其他用户群时（想想一下 Blued 洗完了男同用户后尝试掰弯直男用户），由于需求的匹配程度降低，对原有内容调性造成负面影响的原因，可能降低用户留存。新增的提高和留存的下降功过相抵。在产品改进之前，进一步扩圈投放不经济，新增量达到了临界值。</span></p><p><span>（2）</span><strong><span>商业化能力</span></strong><span>：或早或晚，一个产品需要关注自己的获客 ROI。ROI 的基本要求是做到 LTV≥CAC，也就是花钱获取用户产生的获客成本，长期来看不能低于这个用户产生的生命周期价值。</span></p></blockquote><p>&nbsp;</p><p><span>我们知道新增用户的单位成本常常和新增规模线性相关，当用户规模过了某一个临界点之后会有跳跃式提升，这几乎是必然的。因此长期来看如果要做到 ROI 平衡，新增用户的规模注定会受到公司商业化能力所限制。</span></p><p>&nbsp;</p><p><span>曾经有很多玩家在资本加持下不顾规律，想要大力出奇迹。因为短期的新增确实只要投入力度大就可以迅猛增长，但结果我们都看到了（比如趣头条）。</span></p><p>&nbsp;</p><p><span>而字节跳动之所以愈发强大。很大程度也是因为其不断优化的商业化能力可以支持其持续提高的获客成本，使得新增量始终可以维持在高水位，而持续增大的用户规模提供更多的用户行为数据，反过来帮助其提高推荐效率、增加用户时长、提高变现效率，形成正向循环。</span></p><p>&nbsp;</p><h1 id='两类平台模型的核心竞争要素'><span>两类平台模型的核心竞争要素 </span></h1><h2 id='内容型平台公司'><span>内容型平台公司</span></h2><p><span>这类公司新增手段有两种：①大力出奇迹，比如渠道投放、预装、补贴撒币；②四两拨千斤，比如拼团，裂变，各种各样的增长黑客小手段，各种新奇玩法带来的社交化传播。</span></p><p>&nbsp;</p><p><span>仔细回想一下，我们过去常在朋友圈中看到创意性的相机产品：13 年的魔漫相机、14 年的脸萌、15 年的小咖秀、16-17 年的 FaceU、18 年的马卡龙、19 年的 Zao，这类产品常常刷屏朋友圈并在 Appstore 霸榜多日，拉动一波强劲增长。但是这类独立的相机产品创新在 19 年后逐渐销声匿迹了，原因在于他们多数还没有出世，其创新元素就已成为抖块滤镜的一部分，变成巨头的增长养料。</span></p><p>&nbsp;</p><p><span>留存是一个【产品精密设计 + 工业化精细运营】的体系。设计一个产品时，在获客、落地、留存、促活、变现等所有用户交互环节，每个环节都有大量的细节可以优化或者损耗留存。</span></p><p>&nbsp;</p><blockquote><p><span>那么多的投放渠道怎么选择投放力度？</span></p><p><span>不同渠道的用户画像不同，如何选择不同的素材和关键词引导用户点击下载？</span></p><p><span>从获客到下载落地页怎么做个性化设计？</span></p><p><span>下载后冷启动时候的初次内容呈现？如何引导新用户交互？</span></p><p><span>用户使用过程中，如何将数亿数十亿的内容排序呈现？</span></p><p><span>……</span></p></blockquote><p>&nbsp;</p><p><span>Youtube 有一个常被津津乐道的增长案例：一屏放多少个视频才能引导用户更多的刷新频率，他们通过大量的实验发现 2.3-2.5 个可以将刷新频率提高 1%，从而优化用户时长和留存。</span></p><p>&nbsp;</p><p><span>增长同学们对于人性的大胆假设和小心实验，已经到了社会科学的程度，有时候看到他们通过操弄各种细节，像摆弄小白鼠一般调整用户行为，魔术般地改善产品留存，我常感慨人类或许根本没有自由意志可言....</span></p><p>&nbsp;</p><p><span>在竞争的压力下，每家公司的管理层都会把优化出一个最高效率产品作为目标，这是一个赛道内产品和内容越来越像、殊途同归的原因。但是在具体执行的时候，也还受限于一些自下而上的约束：比如各家公司的价值观、各厂的能力、各个产品自身历史包袱（老用户的使用习惯和口碑）等，因此各家产品的调性和体验还是会有较大区别。</span></p><p>&nbsp;</p><h2 id='平台型内容公司'><span>平台型内容公司</span></h2><p><u><span>对这类公司来说，新增和留存最重要的事情只有三件：内容，内容，还是内容。</span></u></p><p>&nbsp;</p><p><strong><u><span>如果说还有更重要的三件事，那就是头部，头部，还是头部。</span></u></strong></p><p>&nbsp;</p><p><span>以长视频为例，每到年关三大视频网站就会发来年的片单，一年到头无非百来部剧、几十部综艺、几十部动画、几十个纪录片，加起来数千小时的时长。这数千小时的内容，被平台按照一套对内容的理解，安置在一个品类 X 时间的矩阵中，构成了一年的排播表。</span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jFHdNs7Mg3uR6KWRkVLDMpFdTGBSBblsu9B1NL8SxgATdNAZDfs7EcQ/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p>&nbsp;</p><p><span>生产这些内容的人是一个比较稳定的、不大的圈子，他们负责向各家平台发起创意并负责落地实施，每年会有哪些内容可能成为头部，在前一年行业里的各家平台也都大差不差知道。因此，笼络这些核心的生产团队，最大程度的获得头部优质项目，成为各家长视频公司的竞争要害所在。所以衍生出来竞争路径无非几种：</span></p><blockquote><p><span>我和你都知道明年市场上的好内容是哪些，但我有钞能力你没有，我花钱把最好的这些内容都买下来。什么？每年总会有些黑马，没事，一两个黑马改变不了大局，明年我把这匹黑马的内容也都买了。</span></p><p><span>什么？你跟我一起砸钱抢好的内容？那对不起了，我只好祭出更强的钞能力，把优质内容生产公司全都买下来，我独家拥有这些创意源头，让你想砸钱也没法砸，把利润表的竞争延伸到资产负债表的竞争。</span></p><p><span>什么？你也和我一起竞争抢优质内容公司。没办法了，我只好修炼内功，自己研发创意搞自制。但是这些内化的创意也是由人研发的，这些人本身也是流动要素，也有成本，所以这其实也是钞能力的一种。</span></p><p><span>好了，我终于把你熬死了，我赢了，我可以开始压上游的价格开始恰饭了哈哈哈哈…… 但是好景不长，只要上游价格开始松动，一直在旁边虎视眈眈的人也许就会悠悠的吐一口烟：哦，是吗？然后开始下场扫货，开启新一次循环。</span></p></blockquote><p>&nbsp;</p><p><span>过去几年长视频网站不断陷入这样的循环内卷中：拼抢头部剧→为了招商又在头部剧中塞偶像明星→为了平台 ROI 又把大量的流量导向这些剧→每年几百亿小时的用户时长沉淀在少数明星的身上。</span></p><p>&nbsp;</p><p><span>然而这些明星并不是平台的资产，他们会携粉丝反过来向平台议价，在挤压平台的盈利能力的同时，也挤压了其他生产要素所获得的分配，进而导致内容质量升级缓慢。</span></p><p>&nbsp;</p><p><span>这个环境下，郑爽这样的流量明星拿到单片酬 1.6 亿，就成了必然结果。</span></p><p>&nbsp;</p><p><span>长视频玩家们虽然亏得惨但终究也不傻。堆了 10 年的钱，终于先后领悟到了要学习大招——自制优质 IP。</span></p><p>&nbsp;</p><p><span>美国内容行业的灭霸——迪士尼的经验证明了一点：</span><strong><span>拥有一支自带流量的、不会要求涨薪、不会出走去其他平台的复仇者联盟，对于一家内容公司是多么重要。</span></strong><span>长生命周期的头部 IP，是长视频玩家梦寐以求的无限宝石，集齐几个无限宝石是成为灭霸的唯一路径。国内的长视频平台也逐渐意识到这点，开始将重点从每年争夺头部项目的游牧模式，转变为长期耕耘自有 IP 的耕种模式，模式的升级正在发生。</span></p><p>&nbsp;</p><p><span>研究头部内容有多重要一般看几个最重要的指标：头部内容的生命周期、头部内容的集中度、头部更迭率。</span></p><blockquote><p><span>长视频网站的头部剧集生命周期短（1-2 个月），集中度高，头部更迭较慢（头部剧背后的制作公司几年来也就是那么一批），这使得优质 CP 对平台的议价能力居高不下，且平台得疲于奔命地进行一次又一次头部竞争，难以建立长期持续的竞争优势。</span></p><p><span>以 B 站、西瓜为代表的中视频的头部生命周期短，集中度低（接近两百万的活跃 UP 主），头部更迭快，更容易建立铁打的平台，流水的头部。</span></p><p><span>以抖，快为代表短视频平台则更甚，相比长视频，平台上的内容生产者都是平台打工人（快手的打工人的私域好于抖音）。</span></p></blockquote><p>&nbsp;</p><p><span>其他品类，如游戏、漫画、小说，音乐，音频，也可以用类似的框架进行分析。不同品类的头部内容对于建立竞争优势的作用是不同的。这种重要性决定了头部内容对平台的议价能力，也决定了平台有多大必要，在多大范围内建立 in-house 的内容能力。</span></p><p>&nbsp;</p><h1 id='行业现状大逃杀'><span>行业现状：大逃杀 </span></h1><p><span>如果把主流的内容平台的新增和留存拉出来，放在一个沙盘上，会看到一些非常有意思的现象：</span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2janImGl1H82bXld3iaQWWLBCn1sL2iaPD7sF5icK604OibSYuBjpChJ7gGg/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p><span>注：数据大部分来自于 Questmobile，横轴是 20 年 7-9 月的日均新增（万人），纵轴是 20 年 7-9 月的平均 30 日新增留存（%），圈圈代表 DAU。个别公司的 QM 数字不准，但横向比较需要统一口径。</span></p><blockquote><p><span>① 在大盘用户渗透基本见顶的情况下，所有人在竞争同一批用户和时长，此消彼长；</span></p><p><span>② 用户体量越大的内容平台，需要越多的新增和留存来维持用户体量或谋求进一步增长；</span></p><p><span>因为用户红利消失，各家产品都要谋求维稳或增长，对于存量用户的抢夺日趋激励，各家上市公司的财报报表都体现了一个显而易见的事实：</span></p><p><span>③ 整个市场的新增用户获取成本在提升</span></p></blockquote><p>&nbsp;</p><p><span>三个事实推论出一个残酷的结论：</span></p><p>&nbsp;</p><p><span>除非大的技术变更再次系统性的提高人类使用互联网的时间，或者结构上再次出现类似于短视频的新型产品形态，否则大盘用户每天下载 APP 以及其中下载内容平台类 APP 的总数量基本是给定的。那么随着头部 APP 的增长以及流量成本的系统性提升，腰尾部的 APP 会面临主动或被动的新增下滑。</span></p><p>&nbsp;</p><p><span>更为残酷的是，由于用户的时间是给定的，当头部 APP 进一步吞噬用户时间的时候，腰尾部产品的留存也面临下降的风险。在新增和留存同步下滑的时候，用户量的萎缩不可避免。</span></p><p>&nbsp;</p><p><strong><span>马太效应，DoubleKill。</span></strong></p><p>&nbsp;</p><p><span>如果把过去一年产品增长情况标注到上面这张图里，用绿色标注 DAU 增长 20% 以上的产品，红色标注 DAU 衰减的产品，灰色标注 DAU 几乎平稳的产品，会发现整个赛道分成了三个区间：</span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jkncGNYoSFVBuichOQ12g9Buiaicsl6ALQKibCvibNuE2wUq2xl7zFZIcl9Q/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p>&nbsp;</p><p><span>A 区：抖音快手两骑绝尘齐头并进，虹吸行业流量，提高其他产品用户获取成本并在一定程度降低其他产品留存（碎片时间被短视频挤压）。</span></p><p>&nbsp;</p><p><span>C 区：从流量角度，这些产品进入了死亡谷，他们所满足的需求部分被右边的体量产品所挤压，他们有两个选择：①在这个体量上做一个小而美的产品；②突围，要么深耕内容谋求提升用户价值和内容价值，要么通过合并形成更大合力。</span></p><p>&nbsp;</p><p><span>B 区：在中间地带的产品，竞争激烈，要么加速奔跑，要么被竞争对手蚕食，不进则退。B 站的睿帝在接受访谈时提到 “在中国低于 100 亿美金这个体量的内容平台都将被淘汰”，正是这个道理：</span></p><p>&nbsp;</p><p><strong><span>C 区已是毒圈，不想死，就只能奋力向 A 区破圈。</span></strong></p><p>&nbsp;</p><h1 id='内容平台的投资机会'><span>内容平台的投资机会 </span></h1><p><span>内容平台的收入 = MAU x 单用户收入 = MAU x C 端付费率 x C 端 ARPPU + MAU x B 端单用户收入（主要是广告）；</span></p><p>&nbsp;</p><p><span>内容平台的市值 = 盈利 x 估值倍数，估值倍数是投资人关于行业终局空间和格局认知的函数。</span></p><p>&nbsp;</p><p><span>留在毒圈里的小而美要天天担心被双杀，但过往的案例也表明，最爽的投资阶段是【用户量增长 + 单用户收入增长】带来的双轮驱动，此时叠加投资人对于行业格局认知的积极变化拉动估值上涨，从而带来巨大的三连暴击机会。</span></p><p>&nbsp;</p><p><span>15-18 年的微博是一个经典案例，16-18 年的陌陌是一个不太完美的案例，20 年的 B 站则是一个在进行中的案例，爱奇艺从上市到现在都是一个被怀疑的案例。</span></p><p>&nbsp;</p><h2 id='微博2015-2018-年用户商业化双轮驱动叠加格局认知变化带来戴维斯双击股价涨幅-16x'><span>微博，2015-2018 年用户、商业化双轮驱动，叠加格局认知变化带来戴维斯双击，股价涨幅 16x</span></h2><ul><li><span>14 年中微博上市，上市之后一直到 16 年初，虽然用户快速增长（MAU 从 14Q2 的 157mn 到 16Q1 的 261mn），但由于当时的中概股熊市，以及正在治理微博上的公知内容，投资人对公司的长期发展，以及来自微信朋友圈的竞争有顾虑，股票一直走得很弱，到 16 年初最低跌到 20 亿美金，当时相较于 16 年利润 20x P/E。</span></li><li><span>16 年开始，微博已经完成了公知内容治理，全面转向娱乐化，年轻化，下沉化，投资人信心开始逐渐恢复。在 16-18 年间，微博用户数从~ 250mn 涨到 18 年底的 462mn，单用户变现从 MAU 月收入 1 元提高到~ 2 元。这段时间公域流量的大体量运营者基本只有微博（抖快在那两年还不大），竞争格局稳定，因此微博逐渐成为一个投资人的 consistent long，股价里连带打进了视频消费、直播等刚刚开展的业务，最高 forward P/E 达到了 45x。市值从 16 年初的 20 亿美金涨到 18 年中峰值 320 亿美金。</span></li><li><span>18 年快速崛起的短视频成为微博的掘墓人：抖音刚开始做品类泛化，就盯着微博的高流量品类（网红、萌宠、美食、旅行……）一个一个打，并很快上线了热搜等产品抢占原来微博所运营的舆论高地。在字节战车的对比下，微博战斗力羸弱，产品积重难返，运营无力突破，只能用力过猛地大搞明星偶像，反而引起口碑反噬，也逐渐失去了热点发酵阵地的作用。</span></li></ul><p>&nbsp;</p><p><span>我们可以想想，最近一年从微博听到的热点，除了明星八卦还有啥？反而是抖快 B 在不断地制作流行。此时，虽然微博的用户还在增长，但明眼人已经看出用户增长注水严重，盈利失速，很快微博变成了 consistent short，市值目前只有高峰时的 1/3。  </span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jNTnCic6ia4RAiaZoxX4dNo7jHXzTZpAEprC6bP7ECQYnQibIoYEP46aGKA/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h2 id='陌陌2016-2018-年用户天花板肉眼可见商业化效率提升股价涨幅-8x'><span>陌陌：2016-2018 年，用户天花板肉眼可见，商业化效率提升，股价涨幅 8x</span></h2><ul><li><span>14 年底上市的陌陌，上市的时候 MAU~70mn，14 年收入 3 亿人民币，主要靠会员、游戏和礼物（对应大概单 MAU 月收入 0.35 元）。当时市场普遍觉得 MAU 天花板也就是在~ 100mn 左右（到现在也就是 111mn），用户基本没有增长空间，也没有看得到的规模化商业模式，因此在整个 15 年 - 16 年上半年，陌陌的股价都不死不活，最低在 16 年初跌到了 13 亿美金市值。</span></li><li><span>15 年开始，得益于 4G 网络的普及、移动支付的便捷，秀场直播模式从 PC 端被复制到移动端，陌陌等大体量流量产品在 16 年切入直播市场，找到了规模变现途径，单用户变现开始快速提升，其单 MAU 的月收入从 14 年的 0.33 元快速提升到 15 年的 1 元，16 年的 3.8 元，17 年的 7.5 元，18 年的 10 元，带动市值从最低 13 亿美金左右提升到 18 年最高 100 亿美金左右。</span></li><li><span>而后同样也是抖音快手的崛起，让直播行业竞争格局出现急剧恶化。陌陌进入了主跌浪，现在只剩下 30 亿美金。</span></li></ul><p>&nbsp;</p><p><span>陌陌的案例告诉我们：即使用户增长想象空间已经非常有限，快速提升的商业化效率也能驱动 2 年 8 倍的股价涨幅。但是由于用户天花板肉眼可见，直播行业格局日趋恶化，投资人对于股票的信仰并不坚定，即使在商业化效率快速提升的 2 年多时间里，也动辄出现 30% 到腰斩的回撤。</span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jNT40HrhWPiaAPuTASsjWNicNKUabgUejkHGxwYtlSyuS1IL7mDjXtuyw/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h2 id='b-站20-年至今用户商业化效率投资人认知三要素叠加股价涨幅-10x'><span>B 站：20 年至今。用户、商业化效率、投资人认知三要素叠加，股价涨幅 10x</span></h2><p><span>小标题说明了一切。由于能有机会向 A 区冲击的公司已经所剩无几，B 站在一年时间里从年少有为不自卑，成为主流机构一致看好的增长标的，似乎 B 站无所不能，甚至连快手上市的估值都要看 B 站脸色。</span></p><p>&nbsp;</p><p><span>当前的问题是，400 亿美金市值的小破站还能承载这样的一致预期多久？还能够在巨头环伺的格局下猥琐发育多久？</span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2j0dQ7LM58DLNlBLuDPeCeGyZLhMkkpuAu9Afb1HiaJVfJSGHWNmBUIkw/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h2 id='爱奇艺用户增长缓慢货币化率提升缓慢'><span>爱奇艺：用户增长缓慢，货币化率提升缓慢。</span></h2><p><span>爱奇艺的问题是投资人对行业终局始终缺乏信仰，且目前也难以看到第二曲线，时间的朋友为什么要持有他？</span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2j0Za3JNaAHkXaHt6vE7iaESLHvPF9Uqp3SZUtm3iaFcGN1CHbj8WbnMtg/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h1 id='内容平台的未来第二曲线'><span>内容平台的未来：第二曲线 </span></h1><p><span>上市的主流内容平台，除了 B 站外，绝大部分用户增长都放缓了。下一步的增长主要看商业化效率的提升，可见的未来有两条第二增长曲线是值得期待的：</span></p><p>&nbsp;</p><h2 id='内容型平台公司以流量为杠杆切入线上交易场景'><span>内容型平台公司以流量为杠杆切入线上交易场景。</span></h2><p><span>阿里以不到 8% 的互联网用户时长，攫取了接近 60% 的电商交易额，这中间的巨大 gap，就是其他有流量场景的玩家切入线上交易的机会。虽然阿里努力的想要通过在淘宝内搭建内容生态来提高用户时长，但用户心智总仍然把淘宝当做购物目的地而非内容平台，这意味这卡住阿里咽喉的流量饥渴仍然存在，反而是淘宝所教育起来的直播购物场景和用户习惯正被诸多流量拥有者攫取果实。</span></p><p>&nbsp;</p><p><span>当交易的基础设施——支付、物流日趋完善，当各个流量平台建设好购物体验，供应链是否会倾向于在各个流量平台多栖，并将交易向交易成本更低的地方倾斜？诚然，诸多挑战仍然存在，但这是抖，快，微信小程序以及其他内容型平台公司可以尝试抓住的结构型机遇。可以看到阿里电商单个 MAU 的月收入达到了 26.2 元，是所有内容平台类公司的至少 2.5 倍，这是一块巨大的肥肉，因此抖音快手都在不惜代价发力做。</span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jicQ4bRKQ69JpGD29sY6dspQFDEHDsGYwJt3Yx5yP8DhaFuaNfkoibStw/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h2 id='平台型内容公司以优质-ip-为杠杆提高变现效率尝试切入消费场景'><span>平台型内容公司以优质 IP 为杠杆提高变现效率，尝试切入消费场景。</span></h2><p><span>会员费提价是一个老生常谈的问题，未来各家平台内容公司必然会缓慢提高会员收入，这当然也是一种思路，但这个不太性感的逻辑不值得投资人下重注 bet。</span></p><p>&nbsp;</p><p><span>我们会说充一个视频会员的价格比买几张盗版碟还便宜，以此论证提价空间很大。可低价不是一天两天了，为什么付费率还是不到 30%？为什么稍微涨一涨价格就要担心影响付费率掉？</span></p><p>&nbsp;</p><p><strong><span>相比直播、游戏等 C 端付费模式，长视频平台变现率低的最大的原因是无法为高价值用户提供更多的增值服务和付费点。</span></strong><span>直播和游戏都是充值就能让你在和其他人的比较下变得更强和更爽，让少数大玩家比多数普通玩家玩得更开心，从而拉高了整体 ARPPU。</span></p><p>&nbsp;</p><p><span>超前点播作为一种价格歧视的方式是一种类似思路的尝试，但这种方式过于粗暴引起了普通用户的抵触。我认为正确的发展方向应该是进一步深挖自有 IP 价值，以 IP 为杠杆切入消费场景，以衍生商品、衍生游戏、线下娱乐等方式满足 IP 重度粉丝的重度需求。</span></p><p>&nbsp;</p><p><span>以迪士尼为例，这家以知名 IP 电影闻名的公司电影票房收入只有 47 亿美金（2019 年），合计 18 亿观影人次，说明轻度 IP 用户给公司带来的次均收入只有 2.6 美元，比视频网站月会员费也好不了多少。但是其撬动的衍生品和乐园等 IP 衍生收入则有 250 亿美金，乐园入园人次 1.7 亿人次，人均消费 147 美金（重度 IP 用户），支撑了迪士尼接近三成的市值（1000 亿美金）。</span></p><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jyrEH1kZe1d94E1zUUpR7Tn7XicwAJicHo4ejFOG0RytMp2vIRv7mmvwg/640?wx_fmt=png" referrerpolicy="no-referrer"></p><p><span>以上两条第二增长曲线都有机会让这些内容平台公司的价值再增长数倍，诚然要实现都不容易，但世之奇伟瑰怪非常之观，常在于险远。对于内容平台这个行业，吃红利的上半场已经繁华落幕，下半场的远征硬仗才刚刚开始。</span></p></div></div>
+<body><center> 内容平台的大逃杀剧本</center>
+<p>&nbsp;</p>
+<blockquote><p>这些年在线内容消费正在成为一个越发重要的投资板块，在港美股上市的公司也越来越多。其中不乏大量的牛股机会，也有大把的价值陷阱。这些公司的产品大家都是耳熟能详，谁都能花两分钟下个 APP 体验一下。</p>
+<p>但落实到投资，似乎大多人只会用自己喜不喜欢、身边有没有人用，来做一些直观粗糙的感受，对于这些公司如何增长、运营、变现、估值，理解远远不够。</p>
+<p>旗下多几个工作室，拍一堆片子，做一堆游戏就是平台了吗？</p>
+<p>同样是视频网站，爱奇艺用户更多，为什么 B 站会远比爱奇艺值钱？</p>
+<p>为什么没有演技的流量明星会有那么高的片酬？</p>
+<p>同样面对 10 亿的互联网人群，为什么有些产品能持续增长，有些产品不死不活？</p>
+<p>近期和即将上市的快手、知乎、小红书、抖音，又该怎么识别投资机会？</p>
+<p>看完本文，这些问题都能捋顺。</p>
+</blockquote>
+<p>&nbsp;</p>
+<div>[TOC]</div>
+<h1 id='内容平台分类'>内容平台分类 </h1>
+<p>当我们在说内容平台的时候，实际上经常混淆两类公司：第一种叫内容型平台公司，第二种叫平台型内容公司。</p>
+<p>&nbsp;</p>
+<p>咋一看两类公司听起来很像，样子看起来也像，但在细节处却是各有侧重，尤其在心法上大相径庭，对于团队能力点的要求也不尽相同。</p>
+<p>&nbsp;</p>
+<p>内容型平台公司的本质是平台。平台的核心是运营，强调的是如何获取流量，如何分配流量，如何保持平台内容的品质，如何调度内容生产者生产多层次多品类的内容，如何让内容生产者恰上饭。做平台型公司和治理一个城市是类似的，平台的运营者是那双看得见的宏观调控的手。</p>
+<p>&nbsp;</p>
+<p>国内的内容型平台公司，主要是抖音、快手、西瓜、头条、B 站、微博、知乎、小红书、视频号、公众号、多数直播平台等。海外的内容型平台公司，主要包括 Youtube、Twitter、Steam 等。</p>
+<p>&nbsp;</p>
+<p>平台型内容公司的本质是规模化的内容公司，通过自有渠道将内容传输给用户。内容公司的原始模型是做一本杂志、一个电台频道、一个电视频道。只是 Online 时代到来后，这类公司借由互联网拥有了几乎无穷深度的内容货架，但其商业本质依然是内容的产销，其核心技能点是①如何打造一个面向市场的创意生产体系；②如何长期锁定稀缺的内容生产要素；③如何成体系的组织内容以满足多层次的内容需求。</p>
+<p>&nbsp;</p>
+<p>国内的主要平台型内容公司：游戏里的腾讯，视频里的优爱腾芒，音乐音频里的 TME / 网易云 / 喜马拉雅，漫画里的腾讯 / 快看，文学里的阅文 / 番茄。海外则主要是奈飞、迪士尼、AT&amp;T、Comcast 这几个巨头传媒公司。</p>
+<p>&nbsp;</p>
+<p>上面这个定义比较绝对，多数公司的实际业务会在两极之间找一个中间地带定位，同时点着两边的技能点。比较典型的例子就是在投资人心中的 “中国油管” 和创始人心中的 “中国迪士尼” 之间反复横跳的 B 站了。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jQShzRH1Nln00ghxpia808j4cZsMvS1opGUXl5Cepx2GicMez1jDyqe1g/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+<h1 id='一个最简模型'>一个最简模型 </h1>
+<p>我们对内容平台的本质做一个最简化的抽象：</p>
+<p>&nbsp;</p>
+<p>想象内容平台是一个正在接水的水杯，水龙头不断进水（新增用户），同时水杯底下有一个漏口在不断流出水（没有留存下来的用户）。如果进水大于出水，代表 DAU 或者 MAU 的水位就会上升。反之当进水等于出水的时候，水面就平了，用户规模就达到了天花板。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jiciaR1joVTiagtsTr8wmMWibQyvT7tgibolr8N2Ul0epMSJLKjs50C7QWOg/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>也就是说，一个内容平台能达到的用户水平由其新增和留存共同决定。</p>
+<p>&nbsp;</p>
+<p>留存的极限由产品内生给定，除非产品大改，否则极限留存很难系统性变化。</p>
+<blockquote><p>比如长视频平台因为其内容消费的决策成本高，占据时间长，场景受限，内容更新周期等因素，极限留存可能很难和短视频平台抗衡；</p>
+<p>比如面向学生群体的产品，其留存天然受学生开学等因素影响，具有较大的波动性，平均下来不如其他人群。</p>
+</blockquote>
+<p>注意这里说的是品类极限，而某个产品能否达到品类极限，是由各个产品团队的运营能力，以及外部竞争环境决定的。</p>
+<p>&nbsp;</p>
+<p>新增则是由产品内生特点及投入力度而共同决定，限制新增上限的两个最重要的因素是：</p>
+<blockquote><p>（1）<strong>用户群体的天然天花板</strong>：当一个产品从自己的主流用户群尝试破圈到其他用户群时（想想一下 Blued 洗完了男同用户后尝试掰弯直男用户），由于需求的匹配程度降低，对原有内容调性造成负面影响的原因，可能降低用户留存。新增的提高和留存的下降功过相抵。在产品改进之前，进一步扩圈投放不经济，新增量达到了临界值。</p>
+<p>（2）<strong>商业化能力</strong>：或早或晚，一个产品需要关注自己的获客 ROI。ROI 的基本要求是做到 LTV≥CAC，也就是花钱获取用户产生的获客成本，长期来看不能低于这个用户产生的生命周期价值。</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>我们知道新增用户的单位成本常常和新增规模线性相关，当用户规模过了某一个临界点之后会有跳跃式提升，这几乎是必然的。因此长期来看如果要做到 ROI 平衡，新增用户的规模注定会受到公司商业化能力所限制。</p>
+<p>&nbsp;</p>
+<p>曾经有很多玩家在资本加持下不顾规律，想要大力出奇迹。因为短期的新增确实只要投入力度大就可以迅猛增长，但结果我们都看到了（比如趣头条）。</p>
+<p>&nbsp;</p>
+<p>而字节跳动之所以愈发强大。很大程度也是因为其不断优化的商业化能力可以支持其持续提高的获客成本，使得新增量始终可以维持在高水位，而持续增大的用户规模提供更多的用户行为数据，反过来帮助其提高推荐效率、增加用户时长、提高变现效率，形成正向循环。</p>
+<p>&nbsp;</p>
+<h1 id='两类平台模型的核心竞争要素'>两类平台模型的核心竞争要素 </h1>
+<h2 id='内容型平台公司'>内容型平台公司</h2>
+<p>这类公司新增手段有两种：①大力出奇迹，比如渠道投放、预装、补贴撒币；②四两拨千斤，比如拼团，裂变，各种各样的增长黑客小手段，各种新奇玩法带来的社交化传播。</p>
+<p>&nbsp;</p>
+<p>仔细回想一下，我们过去常在朋友圈中看到创意性的相机产品：13 年的魔漫相机、14 年的脸萌、15 年的小咖秀、16-17 年的 FaceU、18 年的马卡龙、19 年的 Zao，这类产品常常刷屏朋友圈并在 Appstore 霸榜多日，拉动一波强劲增长。但是这类独立的相机产品创新在 19 年后逐渐销声匿迹了，原因在于他们多数还没有出世，其创新元素就已成为抖块滤镜的一部分，变成巨头的增长养料。</p>
+<p>&nbsp;</p>
+<p>留存是一个【产品精密设计 + 工业化精细运营】的体系。设计一个产品时，在获客、落地、留存、促活、变现等所有用户交互环节，每个环节都有大量的细节可以优化或者损耗留存。</p>
+<p>&nbsp;</p>
+<blockquote><p>那么多的投放渠道怎么选择投放力度？</p>
+<p>不同渠道的用户画像不同，如何选择不同的素材和关键词引导用户点击下载？</p>
+<p>从获客到下载落地页怎么做个性化设计？</p>
+<p>下载后冷启动时候的初次内容呈现？如何引导新用户交互？</p>
+<p>用户使用过程中，如何将数亿数十亿的内容排序呈现？</p>
+<p>……</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>Youtube 有一个常被津津乐道的增长案例：一屏放多少个视频才能引导用户更多的刷新频率，他们通过大量的实验发现 2.3-2.5 个可以将刷新频率提高 1%，从而优化用户时长和留存。</p>
+<p>&nbsp;</p>
+<p>增长同学们对于人性的大胆假设和小心实验，已经到了社会科学的程度，有时候看到他们通过操弄各种细节，像摆弄小白鼠一般调整用户行为，魔术般地改善产品留存，我常感慨人类或许根本没有自由意志可言....</p>
+<p>&nbsp;</p>
+<p>在竞争的压力下，每家公司的管理层都会把优化出一个最高效率产品作为目标，这是一个赛道内产品和内容越来越像、殊途同归的原因。但是在具体执行的时候，也还受限于一些自下而上的约束：比如各家公司的价值观、各厂的能力、各个产品自身历史包袱（老用户的使用习惯和口碑）等，因此各家产品的调性和体验还是会有较大区别。</p>
+<p>&nbsp;</p>
+<h2 id='平台型内容公司'>平台型内容公司</h2>
+<p><u>对这类公司来说，新增和留存最重要的事情只有三件：内容，内容，还是内容。</u></p>
+<p>&nbsp;</p>
+<p><strong><u>如果说还有更重要的三件事，那就是头部，头部，还是头部。</u></strong></p>
+<p>&nbsp;</p>
+<p>以长视频为例，每到年关三大视频网站就会发来年的片单，一年到头无非百来部剧、几十部综艺、几十部动画、几十个纪录片，加起来数千小时的时长。这数千小时的内容，被平台按照一套对内容的理解，安置在一个品类 X 时间的矩阵中，构成了一年的排播表。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jFHdNs7Mg3uR6KWRkVLDMpFdTGBSBblsu9B1NL8SxgATdNAZDfs7EcQ/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+<p>生产这些内容的人是一个比较稳定的、不大的圈子，他们负责向各家平台发起创意并负责落地实施，每年会有哪些内容可能成为头部，在前一年行业里的各家平台也都大差不差知道。因此，笼络这些核心的生产团队，最大程度的获得头部优质项目，成为各家长视频公司的竞争要害所在。所以衍生出来竞争路径无非几种：</p>
+<blockquote><p>我和你都知道明年市场上的好内容是哪些，但我有钞能力你没有，我花钱把最好的这些内容都买下来。什么？每年总会有些黑马，没事，一两个黑马改变不了大局，明年我把这匹黑马的内容也都买了。</p>
+<p>什么？你跟我一起砸钱抢好的内容？那对不起了，我只好祭出更强的钞能力，把优质内容生产公司全都买下来，我独家拥有这些创意源头，让你想砸钱也没法砸，把利润表的竞争延伸到资产负债表的竞争。</p>
+<p>什么？你也和我一起竞争抢优质内容公司。没办法了，我只好修炼内功，自己研发创意搞自制。但是这些内化的创意也是由人研发的，这些人本身也是流动要素，也有成本，所以这其实也是钞能力的一种。</p>
+<p>好了，我终于把你熬死了，我赢了，我可以开始压上游的价格开始恰饭了哈哈哈哈…… 但是好景不长，只要上游价格开始松动，一直在旁边虎视眈眈的人也许就会悠悠的吐一口烟：哦，是吗？然后开始下场扫货，开启新一次循环。</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>过去几年长视频网站不断陷入这样的循环内卷中：拼抢头部剧→为了招商又在头部剧中塞偶像明星→为了平台 ROI 又把大量的流量导向这些剧→每年几百亿小时的用户时长沉淀在少数明星的身上。</p>
+<p>&nbsp;</p>
+<p>然而这些明星并不是平台的资产，他们会携粉丝反过来向平台议价，在挤压平台的盈利能力的同时，也挤压了其他生产要素所获得的分配，进而导致内容质量升级缓慢。</p>
+<p>&nbsp;</p>
+<p>这个环境下，郑爽这样的流量明星拿到单片酬 1.6 亿，就成了必然结果。</p>
+<p>&nbsp;</p>
+<p>长视频玩家们虽然亏得惨但终究也不傻。堆了 10 年的钱，终于先后领悟到了要学习大招——自制优质 IP。</p>
+<p>&nbsp;</p>
+<p>美国内容行业的灭霸——迪士尼的经验证明了一点：<strong>拥有一支自带流量的、不会要求涨薪、不会出走去其他平台的复仇者联盟，对于一家内容公司是多么重要。</strong>长生命周期的头部 IP，是长视频玩家梦寐以求的无限宝石，集齐几个无限宝石是成为灭霸的唯一路径。国内的长视频平台也逐渐意识到这点，开始将重点从每年争夺头部项目的游牧模式，转变为长期耕耘自有 IP 的耕种模式，模式的升级正在发生。</p>
+<p>&nbsp;</p>
+<p>研究头部内容有多重要一般看几个最重要的指标：头部内容的生命周期、头部内容的集中度、头部更迭率。</p>
+<blockquote><p>长视频网站的头部剧集生命周期短（1-2 个月），集中度高，头部更迭较慢（头部剧背后的制作公司几年来也就是那么一批），这使得优质 CP 对平台的议价能力居高不下，且平台得疲于奔命地进行一次又一次头部竞争，难以建立长期持续的竞争优势。</p>
+<p>以 B 站、西瓜为代表的中视频的头部生命周期短，集中度低（接近两百万的活跃 UP 主），头部更迭快，更容易建立铁打的平台，流水的头部。</p>
+<p>以抖，快为代表短视频平台则更甚，相比长视频，平台上的内容生产者都是平台打工人（快手的打工人的私域好于抖音）。</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>其他品类，如游戏、漫画、小说，音乐，音频，也可以用类似的框架进行分析。不同品类的头部内容对于建立竞争优势的作用是不同的。这种重要性决定了头部内容对平台的议价能力，也决定了平台有多大必要，在多大范围内建立 in-house 的内容能力。</p>
+<p>&nbsp;</p>
+<h1 id='行业现状大逃杀'>行业现状：大逃杀 </h1>
+<p>如果把主流的内容平台的新增和留存拉出来，放在一个沙盘上，会看到一些非常有意思的现象：</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2janImGl1H82bXld3iaQWWLBCn1sL2iaPD7sF5icK604OibSYuBjpChJ7gGg/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>注：数据大部分来自于 Questmobile，横轴是 20 年 7-9 月的日均新增（万人），纵轴是 20 年 7-9 月的平均 30 日新增留存（%），圈圈代表 DAU。个别公司的 QM 数字不准，但横向比较需要统一口径。</p>
+<blockquote><p>① 在大盘用户渗透基本见顶的情况下，所有人在竞争同一批用户和时长，此消彼长；</p>
+<p>② 用户体量越大的内容平台，需要越多的新增和留存来维持用户体量或谋求进一步增长；</p>
+<p>因为用户红利消失，各家产品都要谋求维稳或增长，对于存量用户的抢夺日趋激励，各家上市公司的财报报表都体现了一个显而易见的事实：</p>
+<p>③ 整个市场的新增用户获取成本在提升</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>三个事实推论出一个残酷的结论：</p>
+<p>&nbsp;</p>
+<p>除非大的技术变更再次系统性的提高人类使用互联网的时间，或者结构上再次出现类似于短视频的新型产品形态，否则大盘用户每天下载 APP 以及其中下载内容平台类 APP 的总数量基本是给定的。那么随着头部 APP 的增长以及流量成本的系统性提升，腰尾部的 APP 会面临主动或被动的新增下滑。</p>
+<p>&nbsp;</p>
+<p>更为残酷的是，由于用户的时间是给定的，当头部 APP 进一步吞噬用户时间的时候，腰尾部产品的留存也面临下降的风险。在新增和留存同步下滑的时候，用户量的萎缩不可避免。</p>
+<p>&nbsp;</p>
+<p><strong>马太效应，DoubleKill。</strong></p>
+<p>&nbsp;</p>
+<p>如果把过去一年产品增长情况标注到上面这张图里，用绿色标注 DAU 增长 20% 以上的产品，红色标注 DAU 衰减的产品，灰色标注 DAU 几乎平稳的产品，会发现整个赛道分成了三个区间：</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jkncGNYoSFVBuichOQ12g9Buiaicsl6ALQKibCvibNuE2wUq2xl7zFZIcl9Q/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+<p>A 区：抖音快手两骑绝尘齐头并进，虹吸行业流量，提高其他产品用户获取成本并在一定程度降低其他产品留存（碎片时间被短视频挤压）。</p>
+<p>&nbsp;</p>
+<p>C 区：从流量角度，这些产品进入了死亡谷，他们所满足的需求部分被右边的体量产品所挤压，他们有两个选择：①在这个体量上做一个小而美的产品；②突围，要么深耕内容谋求提升用户价值和内容价值，要么通过合并形成更大合力。</p>
+<p>&nbsp;</p>
+<p>B 区：在中间地带的产品，竞争激烈，要么加速奔跑，要么被竞争对手蚕食，不进则退。B 站的睿帝在接受访谈时提到 “在中国低于 100 亿美金这个体量的内容平台都将被淘汰”，正是这个道理：</p>
+<p>&nbsp;</p>
+<p><strong>C 区已是毒圈，不想死，就只能奋力向 A 区破圈。</strong></p>
+<p>&nbsp;</p>
+<h1 id='内容平台的投资机会'>内容平台的投资机会 </h1>
+<p>内容平台的收入 = MAU x 单用户收入 = MAU x C 端付费率 x C 端 ARPPU + MAU x B 端单用户收入（主要是广告）；</p>
+<p>&nbsp;</p>
+<p>内容平台的市值 = 盈利 x 估值倍数，估值倍数是投资人关于行业终局空间和格局认知的函数。</p>
+<p>&nbsp;</p>
+<p>留在毒圈里的小而美要天天担心被双杀，但过往的案例也表明，最爽的投资阶段是【用户量增长 + 单用户收入增长】带来的双轮驱动，此时叠加投资人对于行业格局认知的积极变化拉动估值上涨，从而带来巨大的三连暴击机会。</p>
+<p>&nbsp;</p>
+<p>15-18 年的微博是一个经典案例，16-18 年的陌陌是一个不太完美的案例，20 年的 B 站则是一个在进行中的案例，爱奇艺从上市到现在都是一个被怀疑的案例。</p>
+<p>&nbsp;</p>
+<h2 id='微博2015-2018-年用户商业化双轮驱动叠加格局认知变化带来戴维斯双击股价涨幅-16x'>微博，2015-2018 年用户、商业化双轮驱动，叠加格局认知变化带来戴维斯双击，股价涨幅 16x</h2>
+<ul>
+<li>14 年中微博上市，上市之后一直到 16 年初，虽然用户快速增长（MAU 从 14Q2 的 157mn 到 16Q1 的 261mn），但由于当时的中概股熊市，以及正在治理微博上的公知内容，投资人对公司的长期发展，以及来自微信朋友圈的竞争有顾虑，股票一直走得很弱，到 16 年初最低跌到 20 亿美金，当时相较于 16 年利润 20x P/E。</li>
+<li>16 年开始，微博已经完成了公知内容治理，全面转向娱乐化，年轻化，下沉化，投资人信心开始逐渐恢复。在 16-18 年间，微博用户数从~ 250mn 涨到 18 年底的 462mn，单用户变现从 MAU 月收入 1 元提高到~ 2 元。这段时间公域流量的大体量运营者基本只有微博（抖快在那两年还不大），竞争格局稳定，因此微博逐渐成为一个投资人的 consistent long，股价里连带打进了视频消费、直播等刚刚开展的业务，最高 forward P/E 达到了 45x。市值从 16 年初的 20 亿美金涨到 18 年中峰值 320 亿美金。</li>
+<li>18 年快速崛起的短视频成为微博的掘墓人：抖音刚开始做品类泛化，就盯着微博的高流量品类（网红、萌宠、美食、旅行……）一个一个打，并很快上线了热搜等产品抢占原来微博所运营的舆论高地。在字节战车的对比下，微博战斗力羸弱，产品积重难返，运营无力突破，只能用力过猛地大搞明星偶像，反而引起口碑反噬，也逐渐失去了热点发酵阵地的作用。</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>我们可以想想，最近一年从微博听到的热点，除了明星八卦还有啥？反而是抖快 B 在不断地制作流行。此时，虽然微博的用户还在增长，但明眼人已经看出用户增长注水严重，盈利失速，很快微博变成了 consistent short，市值目前只有高峰时的 1/3。  </p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jNTnCic6ia4RAiaZoxX4dNo7jHXzTZpAEprC6bP7ECQYnQibIoYEP46aGKA/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+<h2 id='陌陌2016-2018-年用户天花板肉眼可见商业化效率提升股价涨幅-8x'>陌陌：2016-2018 年，用户天花板肉眼可见，商业化效率提升，股价涨幅 8x</h2>
+<ul>
+<li>14 年底上市的陌陌，上市的时候 MAU~70mn，14 年收入 3 亿人民币，主要靠会员、游戏和礼物（对应大概单 MAU 月收入 0.35 元）。当时市场普遍觉得 MAU 天花板也就是在~ 100mn 左右（到现在也就是 111mn），用户基本没有增长空间，也没有看得到的规模化商业模式，因此在整个 15 年 - 16 年上半年，陌陌的股价都不死不活，最低在 16 年初跌到了 13 亿美金市值。</li>
+<li>15 年开始，得益于 4G 网络的普及、移动支付的便捷，秀场直播模式从 PC 端被复制到移动端，陌陌等大体量流量产品在 16 年切入直播市场，找到了规模变现途径，单用户变现开始快速提升，其单 MAU 的月收入从 14 年的 0.33 元快速提升到 15 年的 1 元，16 年的 3.8 元，17 年的 7.5 元，18 年的 10 元，带动市值从最低 13 亿美金左右提升到 18 年最高 100 亿美金左右。</li>
+<li>而后同样也是抖音快手的崛起，让直播行业竞争格局出现急剧恶化。陌陌进入了主跌浪，现在只剩下 30 亿美金。</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>陌陌的案例告诉我们：即使用户增长想象空间已经非常有限，快速提升的商业化效率也能驱动 2 年 8 倍的股价涨幅。但是由于用户天花板肉眼可见，直播行业格局日趋恶化，投资人对于股票的信仰并不坚定，即使在商业化效率快速提升的 2 年多时间里，也动辄出现 30% 到腰斩的回撤。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jNT40HrhWPiaAPuTASsjWNicNKUabgUejkHGxwYtlSyuS1IL7mDjXtuyw/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+<h2 id='b-站20-年至今用户商业化效率投资人认知三要素叠加股价涨幅-10x'>B 站：20 年至今。用户、商业化效率、投资人认知三要素叠加，股价涨幅 10x</h2>
+<p>小标题说明了一切。由于能有机会向 A 区冲击的公司已经所剩无几，B 站在一年时间里从年少有为不自卑，成为主流机构一致看好的增长标的，似乎 B 站无所不能，甚至连快手上市的估值都要看 B 站脸色。</p>
+<p>&nbsp;</p>
+<p>当前的问题是，400 亿美金市值的小破站还能承载这样的一致预期多久？还能够在巨头环伺的格局下猥琐发育多久？</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2j0dQ7LM58DLNlBLuDPeCeGyZLhMkkpuAu9Afb1HiaJVfJSGHWNmBUIkw/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+<h2 id='爱奇艺用户增长缓慢货币化率提升缓慢'>爱奇艺：用户增长缓慢，货币化率提升缓慢。</h2>
+<p>爱奇艺的问题是投资人对行业终局始终缺乏信仰，且目前也难以看到第二曲线，时间的朋友为什么要持有他？</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2j0Za3JNaAHkXaHt6vE7iaESLHvPF9Uqp3SZUtm3iaFcGN1CHbj8WbnMtg/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+<h1 id='内容平台的未来第二曲线'>内容平台的未来：第二曲线 </h1>
+<p>上市的主流内容平台，除了 B 站外，绝大部分用户增长都放缓了。下一步的增长主要看商业化效率的提升，可见的未来有两条第二增长曲线是值得期待的：</p>
+<p>&nbsp;</p>
+<h2 id='内容型平台公司以流量为杠杆切入线上交易场景'>内容型平台公司以流量为杠杆切入线上交易场景。</h2>
+<p>阿里以不到 8% 的互联网用户时长，攫取了接近 60% 的电商交易额，这中间的巨大 gap，就是其他有流量场景的玩家切入线上交易的机会。虽然阿里努力的想要通过在淘宝内搭建内容生态来提高用户时长，但用户心智总仍然把淘宝当做购物目的地而非内容平台，这意味这卡住阿里咽喉的流量饥渴仍然存在，反而是淘宝所教育起来的直播购物场景和用户习惯正被诸多流量拥有者攫取果实。</p>
+<p>&nbsp;</p>
+<p>当交易的基础设施——支付、物流日趋完善，当各个流量平台建设好购物体验，供应链是否会倾向于在各个流量平台多栖，并将交易向交易成本更低的地方倾斜？诚然，诸多挑战仍然存在，但这是抖，快，微信小程序以及其他内容型平台公司可以尝试抓住的结构型机遇。可以看到阿里电商单个 MAU 的月收入达到了 26.2 元，是所有内容平台类公司的至少 2.5 倍，这是一块巨大的肥肉，因此抖音快手都在不惜代价发力做。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jicQ4bRKQ69JpGD29sY6dspQFDEHDsGYwJt3Yx5yP8DhaFuaNfkoibStw/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+<h2 id='平台型内容公司以优质-ip-为杠杆提高变现效率尝试切入消费场景'>平台型内容公司以优质 IP 为杠杆提高变现效率，尝试切入消费场景。</h2>
+<p>会员费提价是一个老生常谈的问题，未来各家平台内容公司必然会缓慢提高会员收入，这当然也是一种思路，但这个不太性感的逻辑不值得投资人下重注 bet。</p>
+<p>&nbsp;</p>
+<p>我们会说充一个视频会员的价格比买几张盗版碟还便宜，以此论证提价空间很大。可低价不是一天两天了，为什么付费率还是不到 30%？为什么稍微涨一涨价格就要担心影响付费率掉？</p>
+<p>&nbsp;</p>
+<p><strong>相比直播、游戏等 C 端付费模式，长视频平台变现率低的最大的原因是无法为高价值用户提供更多的增值服务和付费点。</strong>直播和游戏都是充值就能让你在和其他人的比较下变得更强和更爽，让少数大玩家比多数普通玩家玩得更开心，从而拉高了整体 ARPPU。</p>
+<p>&nbsp;</p>
+<p>超前点播作为一种价格歧视的方式是一种类似思路的尝试，但这种方式过于粗暴引起了普通用户的抵触。我认为正确的发展方向应该是进一步深挖自有 IP 价值，以 IP 为杠杆切入消费场景，以衍生商品、衍生游戏、线下娱乐等方式满足 IP 重度粉丝的重度需求。</p>
+<p>&nbsp;</p>
+<p>以迪士尼为例，这家以知名 IP 电影闻名的公司电影票房收入只有 47 亿美金（2019 年），合计 18 亿观影人次，说明轻度 IP 用户给公司带来的次均收入只有 2.6 美元，比视频网站月会员费也好不了多少。但是其撬动的衍生品和乐园等 IP 衍生收入则有 250 亿美金，乐园入园人次 1.7 亿人次，人均消费 147 美金（重度 IP 用户），支撑了迪士尼接近三成的市值（1000 亿美金）。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/eZ6HnzibvYbtbu9hy5EDqGanuCRhnLia2jyrEH1kZe1d94E1zUUpR7Tn7XicwAJicHo4ejFOG0RytMp2vIRv7mmvwg/640?wx_fmt=png" referrerpolicy="no-referrer"></p>
+<p>以上两条第二增长曲线都有机会让这些内容平台公司的价值再增长数倍，诚然要实现都不容易，但世之奇伟瑰怪非常之观，常在于险远。对于内容平台这个行业，吃红利的上半场已经繁华落幕，下半场的远征硬仗才刚刚开始。</p>
 </body>
 </html>
